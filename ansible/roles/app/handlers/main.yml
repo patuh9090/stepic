@@ -1,3 +1,0 @@
----
-- name: restart stepic
-  service: name=stepic state=restarted

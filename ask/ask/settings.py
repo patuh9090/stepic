@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+@dc0^*_$h^9s^x(n8b#b#of5-54$r)g(4e9q1x7dxl%alnwo8'
+SECRET_KEY = '_pk4ute=^x!+yjiyjte)^e2dr-^+%(95@g9*b4h-68x9x(2bhe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'qa',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,6 +61,17 @@ DATABASES = {
     }
 }
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME' : 'ASK',
+#        'USER' : 'sa',
+#        'PASSWORD': 'sa',
+#        'HOST': 'localhost',
+#        'PORT': 3306,
+#    }
+#}
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -78,3 +90,46 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+BASE_DIR = os.path.abspath(__file__)
+BASE_DIR = os.path.dirname(BASE_DIR)
+BASE_DIR = os.path.dirname(BASE_DIR)
+TEMPLATE_DIRS = (
+   BASE_DIR + '/templates',
+)
+
+STATIC_ROOT = BASE_DIR + '/static'
+#LOGIN_REDIRECT_URL = '/'
+
+#LOGGING = {
+#    'version': 1,
+#    'disable_existing_loggers': False,
+#    'formatters': {
+#        'verbose': {
+#            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+#            'datefmt' : "%d/%b/%Y %H:%M:%S"
+#        },
+#        'simple': {
+#            'format': '%(levelname)s %(message)s'
+#        },
+#    },
+#    'handlers': {
+#        'file': {
+#            'level': 'DEBUG',
+#            'class': 'logging.FileHandler',
+#            'filename': 'mysite.log',
+#            'filename': BASE_DIR + '/logging/debug.log',
+#            'formatter': 'verbose'
+#        },
+#    },
+#    'loggers': {
+#        'django.request': {
+#            'handlers': ['file'],
+#            'level': 'DEBUG',
+#        },
+#        'qa': {
+#            'handlers': ['file'],
+#            'level': 'DEBUG',
+#        },
+#    },
+#}
