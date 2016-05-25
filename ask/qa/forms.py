@@ -8,6 +8,7 @@ class AskForm(forms.Form):
   title = forms.CharField(max_length=255)
   text =  forms.CharField(widget=forms.Textarea)
   
+  
   def clean_title(self):
     title = self.cleaned_data['title']
     if title.strip()=='':

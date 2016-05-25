@@ -58,6 +58,7 @@ def question(request, id):
 def ask_add(request):
    if request.method == 'POST': 
      form = AskForm(request.POST)
+     form._user = request.user
      if form.is_valid():
        form._user = request.user 
        post = form.save()
@@ -71,6 +72,7 @@ def ask_add(request):
 def answer_add(request):
    if request.method == 'POST': 
      form = AnswerForm(request.POST)
+     form._user = request.user
      if form.is_valid():
        form._user = request.user 
        post = form.save()
@@ -98,12 +100,13 @@ def signup_add(request):
 
 def login_add(request):
    #logger.debug(request)
+   error = ''
    if request.method == 'POST': 
      #logger.debug('login_add:' + request.method)
      form = LoginForm(request.POST)
-     #logger.debug('login_add POST:' + request.POST['username'] + ',pass=' + request.POST['password'])
-     if form.is_valid():
-         #logger.debug('login_add form.is_valid:')
+     url = request.POST.get('continue', '/')
+     sessid = do_login(form.login, form.password)
+     if sessid:
          user = form.save()
          if user is not None:
            logout(request)
